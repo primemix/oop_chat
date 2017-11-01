@@ -1,0 +1,17 @@
+{
+    "name": "pro/chat_v1",
+    "description": "Based on Hangouts",
+    "type": "libbrary",
+    "authors": [
+        {
+            "name": "Serhii Kosyouk",
+            "email": "monstrpro@gmail.com"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "": "lib/"
+      }
+    },
+    "require": {}
+}
