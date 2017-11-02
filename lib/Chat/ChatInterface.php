@@ -8,7 +8,7 @@ namespace Chat;
  */
 interface ChatInterface
 {
-    public function getChat();
+    public function getChat($id, $user, $message);
     public function sendMessage();
     public function getMessages();
     public function disconnect();
