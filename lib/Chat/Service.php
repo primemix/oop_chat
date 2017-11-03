@@ -9,10 +9,12 @@ namespace Chat;
 class Service
 {
     /**
-     * @return string
+     * @param $id
+     * @param $user
+     * @return Chat
      */
-    public function newChat()
+    public function newChat($id, $user)
     {
-        return new Chat();
+        return new Chat($id, $user);
     }
 }

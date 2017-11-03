@@ -8,25 +8,33 @@ namespace Chat;
  */
 class Chat implements ChatInterface
 {
+    protected $id;
+    protected $shareLink;
+    protected $shareScreen;
+    protected $message;
+    protected $room;
+
     /**
+     * Chat constructor.
      * @param null $id
      * @param null $user
-     * @param null $message
-     * @return array
      */
-    public function getChat($id = null, $user = null, $message = null)
+    public function __construct($id = null, $user = null)
     {
+        $this->id = $this->generateId();
+        $this->shareLink = $this->shareLink();
+        $this->shareScreen = $this->shareScreen();
+        $this->message = $this->getMessages();
         $chat = array();
-        $messages = array('user1' => 'message');
         if (!$id) {
-            $id = $this->generateId();
             $chat = [
-                'chatId' => $id,
-                    'user' => $user,
-                    'messages' => $messages,
+                'user' => $user,
+                'disconnect' => $this->disconnect(),
+                'toArchive' => $this->toArchive(),
+                'addUser' => $this->addUser(),
             ];
         }
-        
+        $this->room = $chat;
         return $chat;
     }
 
@@ -64,11 +72,62 @@ class Chat implements ChatInterface
     }
 
 
-    public function sendMessage(){}
-    public function getMessages(){}
-    public function addUser(){}
-    public function shareLink(){}
-    public function shareScreen(){}
-    public function toArchive(){}
-    public function disconnect(){}
+    /**
+     * @return string
+     */
+    public function sendMessage()
+    {
+        return 'add message';
+    }
+
+    /**
+     * @return array
+     */
+    public function getMessages()
+    {
+        $messages = array(
+            'user1' => 'messageFirst',
+            'user2' => 'messageFoo',
+            'user3' => 'messageSecond',
+        );
+
+        return $messages;
+    }
+
+    /**
+     * @return string
+     */
+    public function addUser()
+    {
+        return 'add user';
+    }
+
+    /**
+     * @return string
+     */
+    public function shareLink()
+    {
+        return 'share link';
+    }
+
+    /**
+     * @return string
+     */
+    public function shareScreen()
+    {
+        return 'share Screen';
+    }
+
+    /**
+     * @return string
+     */
+    public function toArchive()
+    {
+        return 'to Archive';
+    }
+
+    public function disconnect()
+    {
+        return 'disconnect';
+    }
 }

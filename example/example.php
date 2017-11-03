@@ -16,27 +16,38 @@ $id = null;
 
 $chatService = new \Chat\Service();
 
-$single = $chatService->newChat()->getChat($id, $user);
+$single = $chatService->newChat($id, $user);
 
 echo '<pre>';
 print_r($single);
+session_destroy();
 
-//result:
-//Array
+//Chat\Chat Object
 //(
-//    [chatId] => H5N-rZYKaN9H5zBkYfQDN6ash4ADy-kR
-//        [user] => Array
+//    [id:protected] => 4DRf4BNTH!=EAQtEDfD!GaeGhRb3hN-y
+//    [shareLink:protected] => share link
+//    [shareScreen:protected] => share Screen
+//    [message:protected] => Array
 //        (
-//            [1] => user1
-//            [2] => user2
-//            [3] => user3
-//            [4] => user4
-//            [5] => user5
+//            [user1] => messageFirst
+//            [user2] => messageFoo
+//            [user3] => messageSecond
 //        )
 //
-//    [messages] => Array
-//                (
-//                    [user1] => message
-//                )
+//    [room:protected] => Array
+//            (
+//                [user] => Array
+//                    (
+//                        [1] => user1
+//                        [2] => user2
+//                        [3] => user3
+//                        [4] => user4
+//                        [5] => user5
+//                    )
+//
+//            [disconnect] => disconnect
+//            [toArchive] => to Archive
+//            [addUser] => add user
+//        )
 //
 //)
