@@ -8,12 +8,8 @@ namespace Chat;
  */
 interface ChatInterface
 {
-//    public function getRoom($id, $user);
-    public function sendMessage();
-    public function getMessages();
-    public function disconnect();
-    public function addUser();
-    public function shareLink();
-    public function shareScreen();
-    public function toArchive();
+    /**
+     * @return array
+     */
+    public function chatStream();
 }

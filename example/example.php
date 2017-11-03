@@ -1,5 +1,4 @@
 <?php
-session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -12,42 +11,49 @@ $user = [
     4 => 'user4',
     5 => 'user5'
 ];
-$id = null;
 
-$chatService = new \Chat\Service();
+$id = new \Chat\IdGenerate();
+$shareLink = new \Chat\ShareLink();
+$chatStream = new \Chat\Chat();
 
-$single = $chatService->newChat($id, $user);
+$chatService = new \Chat\Service($id, $shareLink, $chatStream, $user);
 
 echo '<pre>';
-print_r($single);
-session_destroy();
+print_r($chatService);
+/**
+print result:
 
-//Chat\Chat Object
-//(
-//    [id:protected] => 4DRf4BNTH!=EAQtEDfD!GaeGhRb3hN-y
-//    [shareLink:protected] => share link
-//    [shareScreen:protected] => share Screen
-//    [message:protected] => Array
-//        (
-//            [user1] => messageFirst
-//            [user2] => messageFoo
-//            [user3] => messageSecond
-//        )
-//
-//    [room:protected] => Array
-//            (
-//                [user] => Array
-//                    (
-//                        [1] => user1
-//                        [2] => user2
-//                        [3] => user3
-//                        [4] => user4
-//                        [5] => user5
-//                    )
-//
-//            [disconnect] => disconnect
-//            [toArchive] => to Archive
-//            [addUser] => add user
-//        )
-//
-//)
+Chat\Service Object
+(
+    [id:protected] => QGf8AZn=-SBr8DB!+YHn+-7rAsANDdZD
+    [shareLink:protected] => share link
+    [shareScreen:protected] => share Screen
+    [message:protected] => Array
+        (
+                [user1] => messageFirst
+                [user2] => messageFoo
+                [user3] => messageSecond
+        )
+
+    [room:protected] => Array
+        (
+            [user] => Array
+                (
+                    [1] => user1
+                    [2] => user2
+                    [3] => user3
+                    [4] => user4
+                    [5] => user5
+                )
+
+            [disconnect] => disconnect
+            [toArchive] => to Archive
+            [addUser] => add user
+        )
+
+        [chatStream:protected] => Chat\Chat Object
+                (
+                )
+)
+**/
+
